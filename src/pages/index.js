@@ -1,9 +1,9 @@
-import FirstSection from './component/firstSection'
-import SecondSection from './component/secondSection'
+import FirstSection from './component/firstSection.jsx'
+import SecondSection from './component/secondSection.jsx'
 import ThirdSection from './component/thirdSection.jsx'
-import FourthSection from './component/fourthSection';
-import FifthSection from './component/fifthSection';
-import SixthSection from './component/sixthSection';
+import FourthSection from './component/fourthSection.jsx';
+import FifthSection from './component/fifthSection.jsx';
+import SixthSection from './component/sixthSection.jsx';
 
 
 function Home() {
