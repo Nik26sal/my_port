@@ -1,83 +1,136 @@
-function ThirdSection(){
-    return(
-        <section className="bg-black text-white py-24">
-  <div className="max-w-6xl mx-auto px-6">
-    <h2 className="text-3xl md:text-4xl font-bold mb-4">
-      Skills & Technologies
-    </h2>
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-    <p className="text-slate-400 mb-12 max-w-2xl">
-      Technologies and tools I’ve worked with while building projects and
-      solving real-world problems.
-    </p>
-    <div className="grid md:grid-cols-3 gap-10">
-      <div>
-        <h3 className="text-xl font-semibold mb-4">
-          Languages
-        </h3>
-        <ul className="space-y-2 text-slate-400">
-          <li>Java</li>
-          <li>JavaScript</li>
-        </ul>
-      </div>
-      <div>
-        <h3 className="text-xl font-semibold mb-4">
-          Frontend
-        </h3>
-        <ul className="space-y-2 text-slate-400">
-          <li>React.js</li>
-          <li>Tailwind CSS</li>
-          <li>HTML & CSS</li>
-        </ul>
-      </div>
-      <div>
-        <h3 className="text-xl font-semibold mb-4">
-          Backend & Databases
-        </h3>
-        <ul className="space-y-2 text-slate-400">
-          <li>Node.js</li>
-          <li>Express.js</li>
-          <li>MongoDB</li>
-          <li>SQL</li>
-        </ul>
-      </div>
-      <div>
-        <h3 className="text-xl font-semibold mb-4">
-          Tools & Platforms
-        </h3>
-        <ul className="space-y-2 text-slate-400">
-          <li>Git & GitHub</li>
-          <li>REST APIs</li>
-          <li>Socket.IO</li>
-          <li>Cloudinary</li>
-          <li>Vercel</li>
-        </ul>
-      </div>
-      <div>
-        <h3 className="text-xl font-semibold mb-4">
-          Core CS Concepts
-        </h3>
-        <ul className="space-y-2 text-slate-400">
-          <li>Data Structures & Algorithms</li>
-          <li>Operating Systems</li>
-          <li>DBMS</li>
-        </ul>
-      </div>
-      <div>
-        <h3 className="text-xl font-semibold mb-4">
-          Problem Solving
-        </h3>
-        <ul className="space-y-2 text-slate-400">
-          <li>500+ DSA problems solved (LeetCode)</li>
-          <li>LeetCode & Codeforces contests</li>
-        </ul>
-      </div>
+gsap.registerPlugin(ScrollTrigger);
 
-    </div>
-  </div>
-</section>
+function ThirdSection() {
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+  const paraRef = useRef(null);
+  const blocksRef = useRef([]);
 
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+    });
+    tl.fromTo(
+      headingRef.current,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+      }
     )
+      .fromTo(
+        paraRef.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+        },
+        "-=0.3"
+      )
+      .fromTo(
+        blocksRef.current,
+        { opacity: 0, y: 40, scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: "power2.out",
+        },
+        "-=0.2"
+      );
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="bg-black text-white py-24"
+    >
+      <div className="max-w-6xl mx-auto px-6">
+        <h2
+          ref={headingRef}
+          className="text-3xl md:text-4xl font-bold mb-4"
+        >
+          Skills & Technologies
+        </h2>
+        <p
+          ref={paraRef}
+          className="text-slate-400 mb-12 max-w-2xl"
+        >
+          Technologies and tools I’ve worked with while building projects and
+          solving real-world problems.
+        </p>
+        <div className="grid md:grid-cols-3 gap-10">
+          {[
+            {
+              title: "Languages",
+              items: ["Java", "JavaScript"],
+            },
+            {
+              title: "Frontend",
+              items: ["React.js", "Tailwind CSS", "HTML & CSS"],
+            },
+            {
+              title: "Backend & Databases",
+              items: ["Node.js", "Express.js", "MongoDB", "SQL"],
+            },
+            {
+              title: "Tools & Platforms",
+              items: [
+                "Git & GitHub",
+                "REST APIs",
+                "Socket.IO",
+                "Cloudinary",
+                "Vercel",
+              ],
+            },
+            {
+              title: "Core CS Concepts",
+              items: [
+                "Data Structures & Algorithms",
+                "Operating Systems",
+                "DBMS",
+              ],
+            },
+            {
+              title: "Problem Solving",
+              items: [
+                "500+ DSA problems solved (LeetCode)",
+                "LeetCode & Codeforces contests",
+              ],
+            },
+          ].map((block, index) => (
+            <div
+              key={index}
+              ref={(el) => (blocksRef.current[index] = el)}
+            >
+              <h3 className="text-xl font-semibold mb-4">
+                {block.title}
+              </h3>
+              <ul className="space-y-2 text-slate-400">
+                {block.items.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default ThirdSection;
