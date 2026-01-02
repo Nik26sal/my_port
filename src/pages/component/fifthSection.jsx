@@ -76,7 +76,7 @@ function FifthSection() {
         </p>
         <div ref={linksRef} className="flex flex-wrap gap-6">
           <a
-            href="mailto:nikhil.bansal1_cs22@gla.ac.in"
+            href="mailto:bansalnikhil750@gmail.com"
             className="px-6 py-3 rounded-xl bg-indigo-500 hover:bg-indigo-600 transition"
           >
             Email Me
