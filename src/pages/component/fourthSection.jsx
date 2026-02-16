@@ -90,7 +90,7 @@ function FourthSection() {
               </p>
 
               <p className="text-slate-500 text-sm mt-2">
-                CGPA: 8.38 · Expected Graduation: July 2026
+                CGPA: 8.36 · Expected Graduation: July 2026
               </p>
             </div>
           </div>

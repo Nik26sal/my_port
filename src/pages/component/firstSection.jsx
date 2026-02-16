@@ -91,7 +91,7 @@ function FirstSection() {
         <div className="flex-shrink-0">
           <img
             ref={imgRef}
-            src="https://media.licdn.com/dms/image/v2/D5603AQGkEv4hWsM4pQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722590490393?e=1767830400&v=beta&t=HolGS0zD5hqi2qVx66LM3Z1muFJ8rAhWExxvE2VR7uE"
+            src="https://avatars.githubusercontent.com/u/114744576?s=400&u=d74b08e6234eea386a7df7562b4f172895e23b44&v=4"
             alt="Profile"
             className="w-40 h-40 md:w-56 md:h-56 rounded-full border-4 border-indigo-500 object-cover"
           />
